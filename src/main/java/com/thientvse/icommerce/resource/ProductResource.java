@@ -1,4 +1,4 @@
-package com.thientvse.icommerce.resource.exceptions;
+package com.thientvse.icommerce.resource;
 
 
 import io.swagger.annotations.Api;
