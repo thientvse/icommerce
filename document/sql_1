@@ -1,0 +1,74 @@
+create table Brand
+(
+    id        int auto_increment,
+    name      varchar(50) null,
+    createdAt datetime    null,
+    updatedAt datetime    null,
+    constraint Brand_id_uindex
+        unique (id)
+);
+
+alter table Brand
+    add primary key (id);
+
+create table Category
+(
+    id        int auto_increment,
+    name      varchar(50) null,
+    createdAt datetime    null,
+    updatedAt datetime    null,
+    constraint Category_categoryId_uindex
+        unique (id)
+);
+
+alter table Category
+    add primary key (id);
+
+create table Products
+(
+    productId          int auto_increment,
+    productName        varchar(50)   not null,
+    productDescription varchar(1000) null,
+    productPrice       int           null,
+    categoryId         int           not null,
+    createdAt          datetime      null,
+    updatedAt          datetime      null,
+    brandId            int           null,
+    constraint Products_productId_uindex
+        unique (productId),
+    constraint Products_Brand_id_fk
+        foreign key (brandId) references Brand (id),
+    constraint Products_Category_id_fk
+        foreign key (categoryId) references Category (id)
+);
+
+alter table Products
+    add primary key (productId);
+
+create table User
+(
+    userId      int auto_increment
+        primary key,
+    firstName   varchar(20) null,
+    lastName    varchar(20) null,
+    email       varchar(20) null,
+    address     varchar(50) null,
+    phoneNumber varchar(15) null,
+    gender      varchar(10) null
+);
+
+create table `Order`
+(
+    orderId   int auto_increment
+        primary key,
+    productId int      not null,
+    userId    int      null,
+    quantity  int      null,
+    price     int      null,
+    createdAt datetime null,
+    constraint Order_Products_productId_fk
+        foreign key (productId) references Products (productId),
+    constraint Order_User_userId_fk
+        foreign key (orderId) references User (userId)
+);
+
