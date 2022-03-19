@@ -1,4 +1,4 @@
-package com.thientvse.icommerce.resource.exceptions;
+package com.thientvse.icommerce.controller.exceptions;
 
 import com.thientvse.icommerce.exceptions.ObjectNotFoundException;
 import com.thientvse.icommerce.exceptions.ProductHasAlreadyBeenSold;

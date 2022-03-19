@@ -1,9 +1,8 @@
-package com.thientvse.icommerce.resource.exceptions;
+package com.thientvse.icommerce.controller.exceptions;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 
