@@ -20,7 +20,11 @@ public class ProductSpecification {
             if (request.getCategoryId() != 0 ) {
                 predicates.add(criteriaBuilder.equal(root.get("categoryId"), request.getCategoryId()));
             }
-//            query.orderBy(criteriaBuilder.desc(root.get("experience")));
+
+            if (request.getBrandId() != 0 ) {
+                predicates.add(criteriaBuilder.equal(root.get("brandId"), request.getBrandId()));
+            }
+//            query.orderBy(criteriaBuilder.desc(root.get("productName")));
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         };
     }

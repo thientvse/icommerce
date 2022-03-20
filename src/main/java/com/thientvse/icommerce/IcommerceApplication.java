@@ -18,8 +18,8 @@ public class IcommerceApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("\nfindAll()");
-        productRepository.findAll().forEach(x -> System.out.println(x));
-        System.out.println("\nDone");
+//        System.out.println("\nfindAll()");
+//        productRepository.findAll().forEach(x -> System.out.println(x));
+//        System.out.println("\nDone");
     }
 }
