@@ -28,7 +28,12 @@ public class ProductController {
        return new ResponseEntity<>("Hello world", HttpStatus.OK);
     }
 
-
+    @PostMapping("/createProduct")
+    public ResponseEntity<List<Product>> createProduct(
+            @RequestBody List<Product> productList){
+        List<Product> productsList = productService.createProduct(productList);
+        return new ResponseEntity<>(productsList, HttpStatus.OK);
+    }
 
     @GetMapping("/searchProduct")
     public ResponseEntity<List<Product>> searchProduct(

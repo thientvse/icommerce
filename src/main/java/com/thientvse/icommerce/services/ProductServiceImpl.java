@@ -35,6 +35,11 @@ public class ProductServiceImpl implements ProductService{
         return productRepository.findById(id);
     }
 
+    @Override
+    public List<Product> createProduct(List<Product> productRequestList) {
+        return productRepository.saveAll(productRequestList);
+    }
+
 
 //    @Override
 //    public List<Product> searchForProduct(String name, int categoryId, int brandId) {

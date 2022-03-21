@@ -1,6 +1,8 @@
 package com.thientvse.icommerce.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import javax.persistence.*;
 @Table(name = "cart")
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Cart {
     @Id
     @Column(name = "id")
