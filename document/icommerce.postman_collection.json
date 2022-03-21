@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "413cfa00-61f1-4461-9f77-19a991d0d889",
+		"name": "icommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddProductTocart",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_id\": 1,\n    \"quantity\":1,\n    \"user_id\":1,\n    \"price\":1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/cartController/addProduct",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"cartController",
+						"addProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetListProductFromCart",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aGllbnR2c2UiLCJpYXQiOjE2NDc4NTg5NzYsImV4cCI6MTY0Nzg2MjU3Nn0.nBewmcIrZmy4Ft93cTrk6DVjrgZ663syFJ3VxH10S3b8oySKb-jcvfMUWE82dX4QE3ZTKIeToktew4N8S9_8Tw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/cartController/getListProductFromCart",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cartController",
+						"getListProductFromCart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetListProductFromCartById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_id\": 1,\n    \"quantity\":1,\n    \"user_id\":1,\n    \"price\":1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/cartController/addProduct",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"cartController",
+						"addProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteProductFromCart",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_id\": 1,\n    \"quantity\":1,\n    \"user_id\":1,\n    \"price\":1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/cartController/addProduct",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"cartController",
+						"addProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAllProductIncart",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_id\": 1,\n    \"quantity\":1,\n    \"user_id\":1,\n    \"price\":1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/cartController/addProduct",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"cartController",
+						"addProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
