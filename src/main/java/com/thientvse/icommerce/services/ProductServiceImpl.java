@@ -20,12 +20,6 @@ public class ProductServiceImpl implements ProductService{
     public ProductSpecification productSpecification;
 
 
-
-//    @Override
-//    public List<Product> getListProduct() {
-//        return productRepository.findAll();
-//    }
-
     @Override
     public List<Product> searchProduct(ProductRequest productRequest) {
 
