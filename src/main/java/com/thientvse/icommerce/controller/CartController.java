@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cartController")
+@RequestMapping("/api/cartController")
 @Api(value = "Cart resource")
 @CrossOrigin
 public class CartController {
