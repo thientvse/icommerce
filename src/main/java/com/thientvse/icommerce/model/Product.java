@@ -78,4 +78,14 @@ public class Product {
         this.quantity = quantity;
         this.unitPrice = unitPrice;
     }
+
+    public Product(String name, String description, Integer categoryId, Integer brandId, Integer colorId, Integer quantity, Double unitPrice) {
+        this.name = name;
+        this.description = description;
+        this.categoryId = categoryId;
+        this.brandId = brandId;
+        this.colorId = colorId;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+    }
 }

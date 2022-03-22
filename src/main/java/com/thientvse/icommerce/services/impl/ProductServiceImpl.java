@@ -44,4 +44,14 @@ public class ProductServiceImpl implements ProductService {
     public Product getDetailProduct(long id) {
         return productRepository.findById(id).orElseThrow(ObjectNotFoundException::new);
     }
+
+    @Override
+    public List<Product> findAll() {
+        return productRepository.findAll();
+    }
+
+    @Override
+    public Product addProduct(Product product) {
+        return productRepository.save(product);
+    }
 }

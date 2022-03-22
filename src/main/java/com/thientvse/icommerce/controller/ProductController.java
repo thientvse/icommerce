@@ -2,8 +2,6 @@ package com.thientvse.icommerce.controller;
 
 
 import com.thientvse.icommerce.model.Product;
-import com.thientvse.icommerce.model.ProductRequest;
-import com.thientvse.icommerce.repository.specs.ProductSpecification;
 import com.thientvse.icommerce.repository.specs.SearchCriteria;
 import com.thientvse.icommerce.services.ProductService;
 import io.swagger.annotations.Api;
@@ -39,6 +37,13 @@ public class ProductController {
         List<Product> productList = productService.searchProduct(searchCriteriaList);
 
        return new ResponseEntity<>(productList, HttpStatus.OK);
+    }
+
+
+    @PostMapping("/addProduct")
+    public ResponseEntity<Product> addProduct(
+            @RequestBody Product product){
+        return new ResponseEntity<>(productService.addProduct(product), HttpStatus.OK);
     }
 
 
