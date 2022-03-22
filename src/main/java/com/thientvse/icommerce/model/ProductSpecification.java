@@ -24,6 +24,10 @@ public class ProductSpecification {
             if (request.getBrandId() != 0 ) {
                 predicates.add(criteriaBuilder.equal(root.get("brandId"), request.getBrandId()));
             }
+
+            if (request.getColorId() != 0 ) {
+                predicates.add(criteriaBuilder.equal(root.get("colorId"), request.getColorId()));
+            }
 //            query.orderBy(criteriaBuilder.desc(root.get("productName")));
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         };

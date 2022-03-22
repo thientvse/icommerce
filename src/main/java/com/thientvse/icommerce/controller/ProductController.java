@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,10 +23,19 @@ public class ProductController {
     @Autowired
     public ProductService productService;
 
-    @GetMapping("/")
+    /*@GetMapping("/")
     @ApiOperation(value = "Demo api")
     public ResponseEntity<String> sayHello(){
        return new ResponseEntity<>("Hello world", HttpStatus.OK);
+    }*/
+
+    @GetMapping("/all")
+    public String getAll(Model model)  {
+
+        List<Product> list = productService.getAllProduct();
+
+        model.addAttribute("list", list);
+        return "index";
     }
 
     @PostMapping("/createProduct")

@@ -40,6 +40,11 @@ public class ProductServiceImpl implements ProductService{
         return productRepository.saveAll(productRequestList);
     }
 
+    @Override
+    public List<Product> getAllProduct() {
+        return productRepository.findAll();
+    }
+
 
 //    @Override
 //    public List<Product> searchForProduct(String name, int categoryId, int brandId) {
