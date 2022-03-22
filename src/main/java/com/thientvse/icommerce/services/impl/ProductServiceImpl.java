@@ -1,9 +1,11 @@
-package com.thientvse.icommerce.services;
+package com.thientvse.icommerce.services.impl;
 
+import com.thientvse.icommerce.exceptions.ObjectNotFoundException;
 import com.thientvse.icommerce.model.Product;
 import com.thientvse.icommerce.repository.ProductRepository;
 import com.thientvse.icommerce.repository.specs.ProductSpecification;
 import com.thientvse.icommerce.repository.specs.SearchCriteria;
+import com.thientvse.icommerce.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +38,10 @@ public class ProductServiceImpl implements ProductService {
         }
 
         return productList;
+    }
+
+    @Override
+    public Product getDetailProduct(int id) {
+        return productRepository.findById(id).orElseThrow(ObjectNotFoundException::new);
     }
 }

@@ -42,6 +42,14 @@ public class ProductController {
     }
 
 
+    @GetMapping("/getDetailProduct/{id}")
+    public ResponseEntity<Product> getDetailProduct(@PathVariable int id){
+        return new ResponseEntity<>(productService.getDetailProduct(id), HttpStatus.OK);
+    }
+
+
+
+
 
 
 }
