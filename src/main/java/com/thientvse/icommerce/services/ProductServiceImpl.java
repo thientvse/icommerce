@@ -1,18 +1,17 @@
 package com.thientvse.icommerce.services;
 
 import com.thientvse.icommerce.model.Product;
-import com.thientvse.icommerce.model.ProductRequest;
-import com.thientvse.icommerce.model.ProductSpecification;
 import com.thientvse.icommerce.repository.ProductRepository;
+import com.thientvse.icommerce.repository.specs.ProductSpecification;
+import com.thientvse.icommerce.repository.specs.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     @Autowired
     public ProductRepository productRepository;
@@ -22,38 +21,20 @@ public class ProductServiceImpl implements ProductService{
     public ProductSpecification productSpecification;
 
 
-
     @Override
-    public List<Product> getListProduct() {
-        return productRepository.findAll();
-    }
+    public List<Product> searchProduct(List<SearchCriteria> searchCriteriaList) {
+        
+        
+        List<Product> productList = new ArrayList<>();
+        if (searchCriteriaList != null && searchCriteriaList.size() > 0){
+            productSpecification = new ProductSpecification();
+            searchCriteriaList.stream().forEach(searchCriteria -> productSpecification.add(searchCriteria));
 
-    @Override
-    public List<Product> searchProduct(ProductRequest productRequest) {
-
-        if (productRequest.getName() != null ){
-            return productRepository.findAll(productSpecification.getProduct(productRequest));
+            productList = productRepository.findAll(productSpecification);
+        } else {
+            productList = productRepository.findAll();
         }
 
-        return productRepository.findAll();
-    }
-
-
-
-    @Override
-    public List<Product> searchForProduct(String name, int categoryId, int brandId) {
-        Specification<Product> specification = (root, query, cb) -> {
-            final Path<String> path = root.get("productName");
-
-            return cb.like(path, "%"+name+"%");
-        };
-
-        Specification<Product> specCategoryId = (root, query, cb) -> {
-            final Path<String> path = root.get("categoryId");
-
-            return cb.equal(path, categoryId);
-        };
-
-        return productRepository.findAll(specification.and(specCategoryId));
+        return productList;
     }
 }
