@@ -9,6 +9,13 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Table(name = "product")
+@SecondaryTables({
+        @SecondaryTable(name = "category", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id")),
+        @SecondaryTable(name = "brand", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id")),
+        @SecondaryTable(name = "color", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id")),
+
+})
+
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,8 +34,30 @@ public class Product {
     @Column(name = "category_id")
     private Integer categoryId;
 
+    @Column(name = "name", table = "category")
+    private String categoryName;
+
+
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "category_id")
+//    private Category category;
+
     @Column(name = "brand_id")
     private Integer brandId;
+
+    @Column(name = "name", table = "brand")
+    private String brandName;
+
+
+    @Column(name = "color_id")
+    private Integer colorId;
+
+    @Column(name = "name", table = "color")
+    private String colorName;
+
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "brand_id")
+//    private Brand brand;
 
     @Column(name = "quantity")
     private Integer quantity;

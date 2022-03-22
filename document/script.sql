@@ -1,86 +1,79 @@
 create table brand
 (
-    id   int auto_increment,
-    name varchar(50) null,
-    constraint Brand_id_uindex
-        unique (id)
-)
-    charset = latin1;
-
-alter table brand
-    add primary key (id);
+    id   int auto_increment
+        primary key,
+    name varchar(20) null
+);
 
 create table category
 (
-    id   int auto_increment,
-    name varchar(50) null,
-    constraint Category_categoryId_uindex
-        unique (id)
+    id   int auto_increment
+        primary key,
+    name varchar(20) null
 );
-
-alter table category
-    add primary key (id);
 
 create table color
 (
-    color_id   int auto_increment
+    id   int auto_increment
         primary key,
-    color_name varchar(20) null
+    name varchar(20) null
+);
+
+create table hibernate_sequence
+(
+    next_val bigint null
 )
-    charset = latin1;
+    engine = MyISAM;
 
 create table product
 (
-    id            int auto_increment,
-    product_name  varchar(50)   not null,
-    product_des   varchar(1000) null,
-    product_price int           null,
-    category_id   int           not null,
-    brand_id      int           null,
-    color_id      int           null,
-    constraint Products_productId_uindex
-        unique (id),
-    constraint Products_Brand_id_fk
+    id          int auto_increment
+        primary key,
+    name        varchar(50)  null,
+    description varchar(500) null,
+    category_id int          not null,
+    brand_id    int          null,
+    quantity    int          null,
+    unit_price  double       null,
+    color_id    int          null,
+    constraint product___fkc
+        foreign key (color_id) references color (id),
+    constraint product_brand_id_fk
         foreign key (brand_id) references brand (id),
-    constraint Products_Category_id_fk
-        foreign key (category_id) references category (id),
-    constraint product_color_color_id_fk
-        foreign key (color_id) references color (color_id)
+    constraint product_category_id_fk
+        foreign key (category_id) references category (id)
 );
 
-alter table product
-    add primary key (id);
+alter table brand
+    add constraint FKap7k6606mb1t8ve3uw2hieyyo
+        foreign key (id) references product (id);
+
+alter table category
+    add constraint FKokxp80sqio3lkrbbwjoyu15xr
+        foreign key (id) references product (id);
 
 create table user
 (
-    user_id           int auto_increment
+    id    int         not null
         primary key,
-    first_name        varchar(20)  null,
-    last_name         varchar(20)  null,
-    email             varchar(20)  null,
-    address           varchar(50)  null,
-    phone_number      varchar(15)  null,
-    gender            varchar(10)  null,
-    encryted_password varchar(128) null,
-    user_name         varchar(20)  null
-)
-    charset = latin1;
+    name  varchar(20) null,
+    email varchar(50) null
+);
 
-create table cart
+create table shopping_cart
 (
-    cart_id    int auto_increment
+    id         int auto_increment
         primary key,
-    product_id int      not null,
-    user_id    int      null,
-    quantity   int      null,
-    price      int      null,
-    createdAt  datetime null,
-    created_at datetime null,
-    constraint Order_Products_productId_fk
-        foreign key (product_id) references product (id),
-    constraint Order_User_userId_fk
-        foreign key (cart_id) references user (user_id)
-)
-    charset = latin1;
+    user_id    int         null,
+    product_id int         null,
+    stock      int         null,
+    amount     double      null,
+    status     varchar(10) null,
+    date       datetime    null,
+    constraint FK254qp5akhuaaj9n5co4jww3fk
+        foreign key (user_id) references user (id),
+    constraint FKerqg5bwr2tdlwabwdn7r4n2xo
+        foreign key (product_id) references product (id)
+);
 
 
