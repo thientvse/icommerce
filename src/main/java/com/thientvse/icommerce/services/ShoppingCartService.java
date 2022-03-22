@@ -5,15 +5,23 @@ import com.thientvse.icommerce.model.ShoppingCart;
 
 import java.util.List;
 
-public interface CartService {
+public interface ShoppingCartService {
 
     ShoppingCart addProductToCart(ShoppingCartDTO cart);
 
-    void deleteProductFromCart(int id);
 
 //    List<Cart> getListProductFromCart();
 
-    List<ShoppingCart> getListProductFromCartByUserId(int userId);
+    List<ShoppingCart> getListProductFromCartByUserId(long userId);
 
     void deleteAllProductInCart();
+
+    List<ShoppingCart> findAll();
+
+    ShoppingCart updateProduct(ShoppingCartDTO shoppingCartDTO, Long id);
+
+    void deleteProduct(Long id);
+
+    void clearShoppingCart(Object obj);
+
 }

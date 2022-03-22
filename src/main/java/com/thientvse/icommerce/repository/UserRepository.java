@@ -1,8 +1,7 @@
 package com.thientvse.icommerce.repository;
 
 import com.thientvse.icommerce.model.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
-    User findUserByUserId(long userId);
+public interface UserRepository extends CrudRepository<User, Long> {
 }

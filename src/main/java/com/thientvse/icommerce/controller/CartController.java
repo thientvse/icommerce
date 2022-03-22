@@ -2,7 +2,7 @@ package com.thientvse.icommerce.controller;
 
 import com.thientvse.icommerce.dto.ShoppingCartDTO;
 import com.thientvse.icommerce.model.ShoppingCart;
-import com.thientvse.icommerce.services.CartService;
+import com.thientvse.icommerce.services.ShoppingCartService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,31 +19,43 @@ import java.util.List;
 public class CartController {
 
     @Autowired
-    CartService cartService;
+    ShoppingCartService shoppingCartService;
 
     @PostMapping("/addProductToCart")
     public ResponseEntity<ShoppingCart> addProductToCart(
             @RequestBody ShoppingCartDTO cart){
-        ShoppingCart cartCreated = cartService.addProductToCart(cart);
-        return new ResponseEntity<>(cartCreated, HttpStatus.OK);
+        return new ResponseEntity<>(shoppingCartService.addProductToCart(cart), HttpStatus.OK);
+    }
+
+
+    @PostMapping("/updateProductInCart/{id}")
+    public ResponseEntity<ShoppingCart> updateProductInCart(
+            @RequestBody ShoppingCartDTO cart,@PathVariable Long id){
+        return new ResponseEntity<>(shoppingCartService.updateProduct(cart, id), HttpStatus.OK);
+    }
+
+
+    @PostMapping("/getAllProductInShoppingCart")
+    public ResponseEntity<List<ShoppingCart>> getAllProductInShoppingCart(){
+        return new ResponseEntity<>(shoppingCartService.findAll(), HttpStatus.OK);
     }
 
     @PostMapping("/deleteProductFromCart")
     public ResponseEntity<HttpStatus> deleteProductFromCart(
-            @RequestParam int id){
-        cartService.deleteProductFromCart(id);
+            @RequestParam long id){
+        shoppingCartService.deleteProduct(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 
     @GetMapping("/getListProductFromCartByUserId/{userId}")
     public ResponseEntity<List<ShoppingCart>> getListProductFromCartByUserId(@PathVariable int userId){
-        return new ResponseEntity<>(cartService.getListProductFromCartByUserId(userId), HttpStatus.OK);
+        return new ResponseEntity<>(shoppingCartService.getListProductFromCartByUserId(userId), HttpStatus.OK);
     }
 
     @PostMapping("/deleteAllProductInCart")
     public ResponseEntity<HttpStatus> deleteAllProductInCart(){
-        cartService.deleteAllProductInCart();
+        shoppingCartService.deleteAllProductInCart();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

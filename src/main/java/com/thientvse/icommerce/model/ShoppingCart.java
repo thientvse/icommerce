@@ -2,7 +2,6 @@ package com.thientvse.icommerce.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -15,9 +14,9 @@ import java.time.LocalDateTime;
 @Table(name = "shopping_cart")
 public class ShoppingCart implements Serializable {
     @Id
-    @Column(name = "cart_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer cartId;
+    private Long cartId;
 
 
     /*@Column(name = "product_id")
@@ -37,9 +36,6 @@ public class ShoppingCart implements Serializable {
     @Column(name = "stock")
     private Integer stock;
 
-    @Column(name = "price")
-    private Integer price;
-
     @Column(name = "status")
     private String status;
 
@@ -47,12 +43,17 @@ public class ShoppingCart implements Serializable {
     private String amount;
 
 
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "date")
+    @UpdateTimestamp
+    private LocalDateTime date;
+
+
+   /* @Column(name = "created_at", nullable = false, updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private LocalDateTime updatedAt;*/
 
 }
