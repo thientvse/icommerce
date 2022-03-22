@@ -11,5 +11,5 @@ public interface ProductService {
 
      List<Product> searchProduct(List<SearchCriteria> searchCriteriaList);
 
-     Product getDetailProduct(int id);
+     Product getDetailProduct(long id);
 }

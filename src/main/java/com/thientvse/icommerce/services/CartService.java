@@ -1,19 +1,19 @@
 package com.thientvse.icommerce.services;
 
-import com.thientvse.icommerce.model.Cart;
-import org.springframework.stereotype.Service;
+import com.thientvse.icommerce.dto.ShoppingCartDTO;
+import com.thientvse.icommerce.model.ShoppingCart;
 
 import java.util.List;
 
 public interface CartService {
 
-    Cart addProductToCart(Cart cart);
+    ShoppingCart addProductToCart(ShoppingCartDTO cart);
 
     void deleteProductFromCart(int id);
 
 //    List<Cart> getListProductFromCart();
 
-    List<Cart> getListProductFromCartByUserId(int userId);
+    List<ShoppingCart> getListProductFromCartByUserId(int userId);
 
     void deleteAllProductInCart();
 }

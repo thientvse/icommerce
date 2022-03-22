@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -28,6 +30,9 @@ public class Product {
 
     @Column(name = "brand_id")
     private Integer brandId;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    private Set<ShoppingCart> shoppingCarts = new HashSet<>();
 
 
 }

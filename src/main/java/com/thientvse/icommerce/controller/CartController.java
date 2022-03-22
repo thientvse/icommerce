@@ -1,6 +1,7 @@
 package com.thientvse.icommerce.controller;
 
-import com.thientvse.icommerce.model.Cart;
+import com.thientvse.icommerce.dto.ShoppingCartDTO;
+import com.thientvse.icommerce.model.ShoppingCart;
 import com.thientvse.icommerce.services.CartService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/cartController")
+@RequestMapping("/api/v1/cartController")
 @Api(value = "Cart resource")
 @CrossOrigin
 public class CartController {
@@ -21,9 +22,9 @@ public class CartController {
     CartService cartService;
 
     @PostMapping("/addProductToCart")
-    public ResponseEntity<Cart> addProductToCart(
-            @RequestBody Cart cart){
-        Cart cartCreated = cartService.addProductToCart(cart);
+    public ResponseEntity<ShoppingCart> addProductToCart(
+            @RequestBody ShoppingCartDTO cart){
+        ShoppingCart cartCreated = cartService.addProductToCart(cart);
         return new ResponseEntity<>(cartCreated, HttpStatus.OK);
     }
 
@@ -36,7 +37,7 @@ public class CartController {
 
 
     @GetMapping("/getListProductFromCartByUserId/{userId}")
-    public ResponseEntity<List<Cart>> getListProductFromCartByUserId(@PathVariable int userId){
+    public ResponseEntity<List<ShoppingCart>> getListProductFromCartByUserId(@PathVariable int userId){
         return new ResponseEntity<>(cartService.getListProductFromCartByUserId(userId), HttpStatus.OK);
     }
 

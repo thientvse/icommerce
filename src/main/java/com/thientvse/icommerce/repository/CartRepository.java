@@ -1,12 +1,11 @@
 package com.thientvse.icommerce.repository;
 
-import com.thientvse.icommerce.model.Cart;
-import io.swagger.models.auth.In;
+import com.thientvse.icommerce.model.ShoppingCart;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface CartRepository extends JpaRepository<Cart, Integer> {
+public interface CartRepository extends JpaRepository<ShoppingCart, Integer> {
 
-    List<Cart> findAllByUserId(int userId);
+    List<ShoppingCart> findAllByUserId(int userId);
 }
