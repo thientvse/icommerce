@@ -35,11 +35,14 @@ Add a product to shopping cart
 
 #### 1.3 Design core components
 
-<li> Search product and filter with name, category, brand, color</li>
+<li> Product component</li>
 
+![Image](document/image/product_component.png)
 
+<li> Cart Component</li>
 
-<li> Add product to card: update quantity cart, delete product in cart</li>
+![Image](document/image/cart_component.png)
+
 
 #### 1.4 Activity Flow
 
