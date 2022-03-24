@@ -53,6 +53,19 @@ VALUES (1, 'Red');
 INSERT INTO icommerce.color (id, name)
 VALUES (2, 'Blue');
 
+create table customer
+(
+    id           bigint   auto_increment    not null
+        primary key,
+    email        varchar(255) null,
+    phone_number varchar(255) null
+)
+    engine = MyISAM;
+
+INSERT INTO icommerce.customer (id, email, phone_number)
+VALUES (1, 'thientvse@gmail.com','0389937014');
+
+
 create table product
 (
     id            int auto_increment,
@@ -95,7 +108,7 @@ create table cart
     constraint Order_Products_productId_fk
         foreign key (product_id) references product (id),
     constraint Order_User_userId_fk
-        foreign key (cart_id) references user (id)
+        foreign key (user_id) references customer (id)
 )
     charset = latin1;
 
