@@ -96,7 +96,7 @@ curl --location --request GET 'localhost:8080/api/v1/productController/searchPro
 ]'
 ```
 Result
-```aidl
+```bash
 [
     {
         "id": 1,
@@ -123,7 +123,7 @@ Result
 
 4.2.2 Filter By Category
 
-```aidl
+```bash
 curl --location --request GET 'localhost:8080/api/v1/productController/searchProduct' \
 --header 'Content-Type: application/json' \
 --data-raw '[
@@ -140,7 +140,7 @@ curl --location --request GET 'localhost:8080/api/v1/productController/searchPro
 ]'
 ```
 Result
-```aidl
+```bash
 [
     {
         "id": 1,
@@ -157,7 +157,7 @@ Result
 4.2.3 Add Product To Cart
 
 
-```aidl
+```bash
 curl --location --request POST 'localhost:8080/api/v1/cartController/addProductToCart' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -167,7 +167,7 @@ curl --location --request POST 'localhost:8080/api/v1/cartController/addProductT
 ```
 Result
 
-```aidl
+```bash
 {
     "cartId": 1,
     "userId": 1,
@@ -191,7 +191,7 @@ Result
 
 4.2.4 Get List Product in Cart
 
-```aidl
+```bash
 curl --location --request GET 'localhost:8080/api/v1/cartController/getListProductFromCartByUserId/1' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -200,7 +200,7 @@ curl --location --request GET 'localhost:8080/api/v1/cartController/getListProdu
 }'
 ```
 Result
-```aidl
+```bash
 [
     {
         "cartId": 1,
