@@ -6,16 +6,20 @@ services:
     image: mysql:latest
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=icommerce
+#      - MYSQL_DATABASE=icommerce
 #      - MYSQL_USER=thientvse
 #      - MYSQL_PASSWORD=123456a@
     restart: always
     ports:
       - 3306:3306
+    command: --init-file /docker-entrypoint-initdb.d/schema.sql
     volumes:
-      - .document:/docker-entrypoint-initdb.d
-#      - .document/db/init.sql:/docker-entrypoint-initdb.d/setup.sql:ro
-#      - mysqldb:/var/lib/mysql
+#      - .document:/docker-entrypoint-initdb.d
+      - ./docker/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+#      - ./docker/script.sql:/docker-entrypoint-initdb.d/script.sql
+#      - ./docker:/docker-entrypoint-initdb.d/script.sql
+#      - .document/db/script.sql:/docker-entrypoint-initdb.d/setup.sql:ro
+      - mysqldb:/var/lib/mysql
   api:
     container_name: api-icommerce
     image: icommerce
@@ -25,6 +29,7 @@ services:
     depends_on:
       - mysqldb
     environment:
+#      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql/allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&useSSL=false
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql/icommerce?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     ports:
       - 8080:8080

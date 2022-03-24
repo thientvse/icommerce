@@ -36,7 +36,7 @@ public class CartServiceImpl implements CartService {
         cart.setStock(shoppingCartDTO.getStock());
         cart.setUserId(userRepository.findUserByUserId(1L).getUserId());
         cart.setStatus(shoppingCartDTO.getStatus());
-        cart.setPrice(product.getProductPrice() * shoppingCartDTO.getStock());
+        cart.setPrice(product.getUnitPrice() * shoppingCartDTO.getStock());
 
         return cartRepository.save(cart);
     }
