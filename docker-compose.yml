@@ -13,8 +13,9 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - .document/db/init_script.sql:/docker-entrypoint-initdb.d/setup.sql
-      - mysqldb:/var/lib/mysql
+      - .document:/docker-entrypoint-initdb.d
+#      - .document/db/init.sql:/docker-entrypoint-initdb.d/setup.sql:ro
+#      - mysqldb:/var/lib/mysql
   api:
     container_name: api-icommerce
     image: icommerce
