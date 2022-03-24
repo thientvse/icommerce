@@ -13,7 +13,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - .document/db/scpipt.sql:/docker-entrypoint-initdb.d/setup.sql
+      - .document/db/init_script.sql:/docker-entrypoint-initdb.d/setup.sql
       - mysqldb:/var/lib/mysql
   api:
     container_name: api-icommerce

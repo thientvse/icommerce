@@ -20,6 +20,9 @@ VALUES (2, 'Blue');
 INSERT INTO icommerce.user (id, email, full_name, shipping_address, billing_address, phone)
 VALUES (1, 'thientvse@gmail.com', 'Thiiều Văn Thiện', 'Tây Mỗ, Nam Từ Liêm', 'Tây Mỗ, Nam Từ Liêm', '0389937014');
 
+INSERT INTO icommerce.customer (id, email, full_name, shipping_address, billing_address, phone_number)
+VALUES (1, 'thientvse@gmail.com', 'Thiiều Văn Thiện', 'Tây Mỗ, Nam Từ Liêm', 'Tây Mỗ, Nam Từ Liêm', '0389937014');
+
 
 #
 INSERT INTO icommerce.product (id, product_name, description, category_id, brand_id, color_id, quantity, unit_price) VALUES (1, 'Điện thoại Samsung', 'Một sản phẩm của Samsung', 1, 1, 1, 100, 1000);

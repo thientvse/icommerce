@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "user")
+@Table(name = "customer")
 public class User {
     @Id
     @Column(name = "id")
@@ -26,7 +26,7 @@ public class User {
    /* @Column(name = "address")
     private String address;*/
 
-    @Column(name = "phone")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     /*@Column(name = "gender")
