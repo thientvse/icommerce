@@ -23,9 +23,12 @@ public class ShoppingCart implements Serializable {
     /*@Column(name = "product_id")
     private Integer productId;*/
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    /*@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    private User user;
+    private User user;*/
+
+    @Column(name = "user_id")
+    private Integer userId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
@@ -43,8 +46,8 @@ public class ShoppingCart implements Serializable {
     @Column(name = "status")
     private String status;
 
-    @Column(name = "amount")
-    private String amount;
+    @Column(name = "price")
+    private String price;
 
 
     @Column(name = "created_at", nullable = false, updatable = false)

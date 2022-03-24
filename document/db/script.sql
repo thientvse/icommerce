@@ -53,7 +53,7 @@ alter table product
 
 create table user
 (
-    user_id           int auto_increment
+    id           int auto_increment
         primary key,
     first_name        varchar(20)  null,
     last_name         varchar(20)  null,
@@ -79,7 +79,7 @@ create table cart
     constraint Order_Products_productId_fk
         foreign key (product_id) references product (id),
     constraint Order_User_userId_fk
-        foreign key (cart_id) references user (user_id)
+        foreign key (cart_id) references user (id)
 )
     charset = latin1;
 

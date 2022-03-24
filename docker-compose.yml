@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  mysqldb:
+    container_name: mysql
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=icommerce
+#      - MYSQL_USER=thientvse
+#      - MYSQL_PASSWORD=123456a@
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - .document/db/scpipt.sql:/docker-entrypoint-initdb.d/setup.sql
+      - mysqldb:/var/lib/mysql
+  api:
+    container_name: api-icommerce
+    image: icommerce
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - mysqldb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql/icommerce?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    ports:
+      - 8080:8080
+    restart: always
+
+volumes:
+  mysqldb:

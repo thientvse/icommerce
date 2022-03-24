@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User {
     @Id
-    @Column(name = "user_id")
+    @Column(name = "id")
     private Integer userId;
 
     @Column(name = "first_name")
