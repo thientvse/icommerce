@@ -82,7 +82,149 @@ Run project with docker-compose.yml
 
 #### 4.2 Test API
 
+4.2.1 Search Product:
+
+```bash
+curl --location --request GET 'localhost:8080/api/v1/productController/searchProduct' \
+--header 'Content-Type: application/json' \
+--data-raw '[
+{
+"key":"productName",
+"value":"Samsung",
+"operation":"MATCH"
+}
+]'
+```
+Result
+```aidl
+[
+    {
+        "id": 1,
+        "productName": "Điện thoại Samsung",
+        "description": "Một sản phẩm của Samsung",
+        "categoryId": 1,
+        "brandId": 1,
+        "colorId": 1,
+        "quantity": 100,
+        "unitPrice": 1000
+    },
+    {
+        "id": 3,
+        "productName": "Tủ lạnh Samsung",
+        "description": "Một sản phẩm của Samsung",
+        "categoryId": 2,
+        "brandId": 1,
+        "colorId": 2,
+        "quantity": 50,
+        "unitPrice": 500
+    }
+]
+```
+
+4.2.2 Filter By Category
+
+```aidl
+curl --location --request GET 'localhost:8080/api/v1/productController/searchProduct' \
+--header 'Content-Type: application/json' \
+--data-raw '[
+    {
+        "key":"productName",
+        "value":"Samsung",
+        "operation":"MATCH"
+    },
+    {
+        "key":"categoryId",
+        "value":1,
+        "operation":"EQUAL"
+    }
+]'
+```
+Result
+```aidl
+[
+    {
+        "id": 1,
+        "productName": "Điện thoại Samsung",
+        "description": "Một sản phẩm của Samsung",
+        "categoryId": 1,
+        "brandId": 1,
+        "colorId": 1,
+        "quantity": 100,
+        "unitPrice": 1000
+    }
+]
+```
+4.2.3 Add Product To Cart
 
 
+```aidl
+curl --location --request POST 'localhost:8080/api/v1/cartController/addProductToCart' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "productId":1,
+    "stock":3
+}'
+```
+Result
+
+```aidl
+{
+    "cartId": 1,
+    "userId": 1,
+    "product": {
+        "id": 1,
+        "productName": "Điện thoại Samsung",
+        "description": "Một sản phẩm của Samsung",
+        "categoryId": 1,
+        "brandId": 1,
+        "colorId": 1,
+        "quantity": 100,
+        "unitPrice": 1000
+    },
+    "stock": 3,
+    "price": 3000,
+    "status": null,
+    "createdAt": "2022-03-24T17:51:20.108",
+    "updatedAt": "2022-03-24T17:51:20.108"
+}
+```
+
+4.2.4 Get List Product in Cart
+
+```aidl
+curl --location --request GET 'localhost:8080/api/v1/cartController/getListProductFromCartByUserId/1' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "productId":1,
+    "stock":1
+}'
+```
+Result
+```aidl
+[
+    {
+        "cartId": 1,
+        "userId": 1,
+        "product": {
+            "id": 1,
+            "productName": "Điện thoại Samsung",
+            "description": "Một sản phẩm của Samsung",
+            "categoryId": 1,
+            "brandId": 1,
+            "colorId": 1,
+            "quantity": 100,
+            "unitPrice": 1000
+        },
+        "stock": 3,
+        "price": 3000,
+        "status": null,
+        "createdAt": "2022-03-24T17:51:20",
+        "updatedAt": "2022-03-24T17:51:20"
+    }
+]
+```
+
+Note 
 > mvn clean package -DskipTests
+> 
 > docker-compose up --build --force-recreate
