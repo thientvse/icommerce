@@ -1,6 +1,5 @@
-create database icommerce;
-
-use icommerce;
+CREATE DATABASE IF NOT EXISTS icommerce;
+USE icommerce;
 
 create table brand
 (
