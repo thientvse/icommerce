@@ -94,7 +94,7 @@ Run project with docker-compose.yml
 
 #### 4.2 Test API
 
-4.2.1 Search Product:
+#### 4.2.1 Search Product:
 
 <li> The <b>User</b> type keyword and request to the <b>Web Server</b> </li>
 <li> The <b>Webserver</b> forward to the <b>Search API</b> </li>
@@ -141,7 +141,7 @@ Result
 ]
 ```
 
-4.2.2 Filter By Category
+#### 4.2.2 Filter By Category
 
 <li> The <b>User</b> choose option filter request to the <b>Web Server</b> </li>
 <li> The <b>Webserver</b> forward to the <b>Search API</b> </li>
@@ -184,7 +184,7 @@ Result
     }
 ]
 ```
-4.2.3 Add Product To Cart
+#### 4.2.3 Add Product To Cart
 
 <li> The <b>User</b> click add product to cart and request to the <b>Web Server</b> </li>
 <li> The <b>Webserver</b> forward to the <b>Cart API</b> </li>
@@ -226,7 +226,7 @@ Result
 }
 ```
 
-4.2.4 Get List Product in Cart
+#### 4.2.4 Get List Product in Cart
 
 <li> The <b>User</b> click to cart and request to the <b>Web Server</b> </li>
 <li> The <b>Webserver</b> forward to the <b>Cart API</b> </li>
