@@ -14,15 +14,15 @@ import java.util.Set;
 public class Product {
     @Id
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "product_name")
     private String productName;
 
-    @Column(name = "product_des")
+    @Column(name = "description")
     private String productDes;
 
-    @Column(name = "product_price")
+    @Column(name = "unit_price")
     private Integer productPrice;
 
     @Column(name = "category_id")
@@ -31,8 +31,8 @@ public class Product {
     @Column(name = "brand_id")
     private Integer brandId;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-    private Set<ShoppingCart> shoppingCarts = new HashSet<>();
+    /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    private Set<ShoppingCart> shoppingCarts = new HashSet<>();*/
 
 
 }

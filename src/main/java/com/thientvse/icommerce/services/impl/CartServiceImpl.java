@@ -2,7 +2,7 @@ package com.thientvse.icommerce.services.impl;
 
 import com.thientvse.icommerce.dto.ShoppingCartDTO;
 import com.thientvse.icommerce.model.Product;
-import com.thientvse.icommerce.model.ShoppingCart;
+import com.thientvse.icommerce.model.Cart;
 import com.thientvse.icommerce.repository.CartRepository;
 import com.thientvse.icommerce.repository.ProductRepository;
 import com.thientvse.icommerce.repository.UserRepository;
@@ -27,29 +27,29 @@ public class CartServiceImpl implements CartService {
 
 
     @Override
-    public ShoppingCart addProductToCart(ShoppingCartDTO shoppingCartDTO) {
+    public Cart addProductToCart(ShoppingCartDTO shoppingCartDTO) {
 
-        ShoppingCart shoppingCart = new ShoppingCart();
+        Cart cart = new Cart();
 
         Product product = productRepository.findProductById(shoppingCartDTO.getProductId());
-        shoppingCart.setProduct(product);
-        shoppingCart.setStock(shoppingCartDTO.getStock());
-        shoppingCart.setUserId(userRepository.findUserByUserId(1L).getUserId());
-        shoppingCart.setStatus(shoppingCartDTO.getStatus());
-        shoppingCart.setPrice(String.valueOf(product.getProductPrice() * shoppingCartDTO.getStock()));
+        cart.setProduct(product);
+        cart.setStock(shoppingCartDTO.getStock());
+        cart.setUserId(userRepository.findUserByUserId(1L).getUserId());
+        cart.setStatus(shoppingCartDTO.getStatus());
+        cart.setPrice(product.getProductPrice() * shoppingCartDTO.getStock());
 
-        return cartRepository.save(shoppingCart);
+        return cartRepository.save(cart);
     }
 
 
 
     @Override
-    public void deleteProductFromCart(int id) {
+    public void deleteProductFromCart(long id) {
         cartRepository.deleteById(id);
     }
 
     @Override
-    public List<ShoppingCart> getListProductFromCartByUserId(int userId) {
+    public List<Cart> getListProductFromCartByUserId(long userId) {
         return cartRepository.findAllByUserId(userId);
     }
 

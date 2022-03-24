@@ -1,19 +1,19 @@
 package com.thientvse.icommerce.services;
 
 import com.thientvse.icommerce.dto.ShoppingCartDTO;
-import com.thientvse.icommerce.model.ShoppingCart;
+import com.thientvse.icommerce.model.Cart;
 
 import java.util.List;
 
 public interface CartService {
 
-    ShoppingCart addProductToCart(ShoppingCartDTO cart);
+    Cart addProductToCart(ShoppingCartDTO cart);
 
-    void deleteProductFromCart(int id);
+    void deleteProductFromCart(long id);
 
 //    List<Cart> getListProductFromCart();
 
-    List<ShoppingCart> getListProductFromCartByUserId(int userId);
+    List<Cart> getListProductFromCartByUserId(long userId);
 
     void deleteAllProductInCart();
 }

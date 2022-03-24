@@ -12,12 +12,12 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @Entity
-@Table(name = "shopping_cart")
-public class ShoppingCart implements Serializable {
+@Table(name = "cart")
+public class Cart implements Serializable {
     @Id
-    @Column(name = "cart_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer cartId;
+    private Long cartId;
 
 
     /*@Column(name = "product_id")
@@ -28,7 +28,7 @@ public class ShoppingCart implements Serializable {
     private User user;*/
 
     @Column(name = "user_id")
-    private Integer userId;
+    private Long userId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
@@ -37,7 +37,7 @@ public class ShoppingCart implements Serializable {
    /* @Column(name = "user_id")
     private Integer userId;*/
 
-    @Column(name = "stock")
+    @Column(name = "quantity")
     private Integer stock;
 
     @Column(name = "price")
@@ -45,9 +45,6 @@ public class ShoppingCart implements Serializable {
 
     @Column(name = "status")
     private String status;
-
-    @Column(name = "price")
-    private String price;
 
 
     @Column(name = "created_at", nullable = false, updatable = false)

@@ -1,11 +1,11 @@
 package com.thientvse.icommerce.repository;
 
-import com.thientvse.icommerce.model.ShoppingCart;
+import com.thientvse.icommerce.model.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface CartRepository extends JpaRepository<ShoppingCart, Integer> {
+public interface CartRepository extends JpaRepository<Cart, Long> {
 
-    List<ShoppingCart> findAllByUserId(int userId);
+    List<Cart> findAllByUserId(long userId);
 }

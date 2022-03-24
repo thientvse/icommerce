@@ -1,7 +1,7 @@
 package com.thientvse.icommerce.controller;
 
 import com.thientvse.icommerce.dto.ShoppingCartDTO;
-import com.thientvse.icommerce.model.ShoppingCart;
+import com.thientvse.icommerce.model.Cart;
 import com.thientvse.icommerce.services.CartService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,22 +22,22 @@ public class CartController {
     CartService cartService;
 
     @PostMapping("/addProductToCart")
-    public ResponseEntity<ShoppingCart> addProductToCart(
+    public ResponseEntity<Cart> addProductToCart(
             @RequestBody ShoppingCartDTO cart){
-        ShoppingCart cartCreated = cartService.addProductToCart(cart);
+        Cart cartCreated = cartService.addProductToCart(cart);
         return new ResponseEntity<>(cartCreated, HttpStatus.OK);
     }
 
     @PostMapping("/deleteProductFromCart")
     public ResponseEntity<HttpStatus> deleteProductFromCart(
-            @RequestParam int id){
+            @RequestParam long id){
         cartService.deleteProductFromCart(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
     @GetMapping("/getListProductFromCartByUserId/{userId}")
-    public ResponseEntity<List<ShoppingCart>> getListProductFromCartByUserId(@PathVariable int userId){
+    public ResponseEntity<List<Cart>> getListProductFromCartByUserId(@PathVariable long userId){
         return new ResponseEntity<>(cartService.getListProductFromCartByUserId(userId), HttpStatus.OK);
     }
 
